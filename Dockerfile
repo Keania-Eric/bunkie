@@ -7,6 +7,8 @@ COPY package*.json ./
 
 RUN npm install
 
+RUN npm i -g nodemon
+
 #COPY app bundle
 COPY . .
 

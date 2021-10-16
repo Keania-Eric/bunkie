@@ -15,7 +15,7 @@ app.use('/auth', authRouter)
 const PORT = process.env.PORT
 
 app.get('/', (req, res, next)=> {
-    console.log('I got a request in here')
+  
     res.json("My first nodejs application")
 })
 
