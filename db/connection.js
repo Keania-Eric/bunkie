@@ -1,21 +1,23 @@
 const mongoose = require('mongoose')
 
-let url = process.env.MONGO_DB_URL
+const url = process.env.MONGO_DB_URL
+
+const db = process.env.MONGO_DATABASE
 
 const configOpts = {
-    useMongoClient : true,
     useNewUrlParser: true,
-    authSource: process.env.MONGO_DATABASE
+    useUnifiedTopology: true,
+    // useCreateIndex: true,
+    // useFindAndModify: true,
+    //authSource: db
 }
 
-mongoose.Promise  = global.Promise
-mongoose.connect(url, configOpts, (err)=> {
-    if (err) {
-        console.log('Error connecting to mongodb')
-    }
-    
-})
-
-mongoose.set('debug', true)
-
-module.exports = mongoose.connection
+exports.connect = ()=> {
+    mongoose.connect(url, configOpts).then(()=> {
+        console.log("Successfully connected to a database")
+    }).catch((error)=> {
+        console.log("Database connection failed")
+        console.log(error)
+        process.exit(1)
+    })
+}

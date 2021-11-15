@@ -2,7 +2,7 @@ version: '3'
 
 services:
   app:
-    container_name: evisitapp
+    container_name: bunkie-app
     restart: always
     build: .
     ports:
@@ -14,7 +14,7 @@ services:
   
   mongo:
     image: mongo
-    container_name: mongo
+    container_name: bunkie-db
     restart: always
     ports:
       - "27017:27017"

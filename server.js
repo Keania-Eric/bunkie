@@ -2,7 +2,7 @@ const express = require('express')
 const helmet = require('helmet')
 
 require('dotenv').config()
-require('./db/connection')
+require('./db/connection').connect()
 
 const authRouter = require('./routes/auth.routes')
 
